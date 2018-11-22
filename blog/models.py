@@ -18,8 +18,8 @@ class Reply(models.Model):
         return self.title
 
 class Request(models.Model):
-    title = models.CharField(max_length=200, default='')
-    name_of_inhabitant = models.CharField(max_length=200)
+    title1 = models.CharField(max_length=200, default='')
+    name_of_inhabitant1 = models.CharField(max_length=200)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
