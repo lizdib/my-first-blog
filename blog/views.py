@@ -5,7 +5,7 @@ from .models import Reply
 from .models import Request
 
 def post_list(request):
-    posts1 = Reply.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    posts2 = Request.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts1 = Reply.objects.filter(published_date__lte=timezone.now()).order_by('title')
+    posts2 = Request.objects.filter(published_date__lte=timezone.now()).order_by('title1')
     return render(request, 'blog/post_list.html', {'posts': posts1})
     return render(request, 'blog/post_list.html', {'posts': posts2})
