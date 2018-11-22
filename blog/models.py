@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class Reply(models.Model):
-    #title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, default='')
     name_of_inhabitant = models.CharField(max_length=200)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     name_of_organisation = models.CharField(max_length=200)
@@ -14,11 +14,11 @@ class Reply(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    #def __str__(self):
-        #return self.title
+    def __str__(self):
+        return self.title
 
 class Request(models.Model):
-    #title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, default='')
     name_of_inhabitant = models.CharField(max_length=200)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
@@ -31,5 +31,5 @@ class Request(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    #def __str__(self):
-        #return self.title
+    def __str__(self):
+        return self.title
