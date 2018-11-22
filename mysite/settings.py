@@ -25,7 +25,7 @@ SECRET_KEY = 'ie10*j=uh+z6twg44fq5tetez2jiwer%-1pod%-jbu2jqz)xe+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'lizdib.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'liza.pythonanywhere.com']
 
 
 # Application definition

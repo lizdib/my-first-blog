@@ -38,29 +38,11 @@ rowspan="2"
 style="width:80%">
 <h2>Главная</h2>
 <p style="text-indent:20px">
-{% for Reply in posts %}
-<div>
-   <h1><a href="">{{ post.title }}</a></h1>
-   <p>{{ post.name_of_inhabitant|linebreaksbr }}</p>
-   <p>{{ post.name_of_organisation|linebreaksbr }}</p>
-   <p>{{ post.result|linebreaksbr }}</p>
-   <p>published: {{ post.published_date }}</p>
-</div>
-{% endfor %}
+{% block content %}
+{% endblock %}
 </p>
 
-<p style="text-indent:20px">
-  {% for Request in posts %}
-  <div>
-     <h1><a href="">{{ post.title }}</a></h1>
-     <p>{{ post.name_of_inhabitant|linebreaksbr }}</p>
-     <p>{{ post.phone_number|linebreaksbr }}</p>
-     <p>{{ post.email|linebreaksbr }}</p>
-     <p>{{ post.reason|linebreaksbr }}</p>
-     <p>published: {{ post.published_date }}</p>
-  </div>
-  {% endfor %}
-</p>
+<p style="text-indent:20px"></p>
 </td>
 
 <td bgcolor="#FFA07A">
