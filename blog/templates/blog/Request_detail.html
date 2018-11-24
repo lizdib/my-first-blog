@@ -1,0 +1,10 @@
+{% extends 'blog/post_list.html' %}
+
+{% block content %}
+<h3><b>Заявка №{{ Request.title1 }}</b></h3>
+<p>ФИО потребителя: {{ Request.name_of_inhabitant1|linebreaksbr }}</p>
+<p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
+<p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
+<p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
+<p>Дата: {{ Request.published_date }}</p>
+{% endblock %}

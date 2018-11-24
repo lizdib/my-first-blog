@@ -1,0 +1,9 @@
+{% extends 'blog/post_list.html' %}
+
+{% block content %}
+<h3><b>Ответ №{{ Reply.title }}</b></h3>
+<p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
+<p>Наименование организации: {{ Reply.name_of_organisation|linebreaksbr }}</p>
+<p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
+<p>Дата: {{ Reply.published_date }}</p>
+{% endblock %}
