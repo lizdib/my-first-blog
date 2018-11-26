@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.utils import timezone
 from .forms import ReplyForm
 from .forms import RequestForm
@@ -20,3 +21,15 @@ def Request_detail(request, pk):
 def Reply_detail(request, pk):
     rep = get_object_or_404(Reply, pk=pk)
     return render(request, 'blog/Reply_detail.html', {'Reply': rep})
+
+def search_form(request):
+    return render_to_response('search_form.html')
+
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        books = Book.objects.filter(title__icontains=q)
+        return render_to_response('search_results.html',
+            {'books': books, 'query': q})
+    else:
+        return render_to_response('search_form.html', {'error': True})

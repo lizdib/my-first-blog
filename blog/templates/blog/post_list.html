@@ -4,22 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <title>ГБУ "Жилищник"</title>
-<style>
-p {
-color:  black;
-padding-left: 40px;}
-h3 {
-  padding-left: 30px;
-}
-header {
- display: block;
- height: 105px;
- text-align: center;
- background: #98FB98;
-}
-body {
-}
-</style>
+
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
@@ -29,11 +14,22 @@ body {
 <h1><a href='/'><header>ГБУ "Жилищник"</a></h1>
 
 <table bgcolor="#FFA07A" cellpadding="40" style="width:100%">
-<div class="div r1">
 <td rowspan="2" style="width:80%">
+<p style="text-align: left"><a href="/"><button>Просмотреть заявки</button></a></p>
+<p style="text-align: left"><a href="/"><button>Просмотреть ответы</button></a></p>
+<p style="text-align: left"><a href="http://127.0.0.1:8000/search-form.html"><button>Поиск ответов</button></a></p>
 
+<form>
+ Фамилия заявителя:<br>
+ <input type="text" name="name_of_inhabitant"><br>
+ Номер заявки:<br>
+ <input type="text" name="title1"><br>
+ Номер ответа:<br>
+ <input type="text" name="title"><br>
+ <input type="submit" value="Submit">
+</form>
 
-{% for Request in req %}
+{% for Request in rep %}
    <a href="http://127.0.0.1:8000/admin/blog/request/"><h3><b>Заявка №{{ Request.title1 }}</b></h3></a>
    <p>ФИО потребителя: {{ Request.name_of_inhabitant1|linebreaksbr }}</p>
    <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
@@ -52,7 +48,7 @@ body {
    <hr align="left" width="300" size="4" color="#ADFF2F" />
 {% endfor %}
 
-
+<p></p>
 </td>
 
 <td bgcolor="#FFA07A">
@@ -78,7 +74,6 @@ cellpadding="10"
 style="width:100%; border-radius:5px;">
 
 </table>
-</div>
 </td>
 </tr>
 </table>

@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Search results</title>
+</head>
+<body>
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+{% if rep %}
+    <p>Found {{ Reply|length }} Reply{{ Reply|pluralize }}.</p>
+    <ul>
+        {% for Reply in rep %}
+        <li>{{ Reply.title }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No replies matched your search criteria.</p>
+{% endif %}
+</body>
+</html>

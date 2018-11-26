@@ -4,67 +4,53 @@
 <head>
 <meta charset="utf-8" />
 <title>ГБУ "Жилищник"</title>
+<style>
+p {
+color:  black;
+padding-left: 40px;}
+h3 {
+  padding-left: 30px;
+}
+header {
+ display: block;
+ height: 105px;
+ text-align: center;
+ background: #98FB98;
+}
+body {
+}
+</style>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
 </head>
 <body>
-<table
-border="1"
-align="center"
-rules="rows"
-style="width:100%;">
+<h1><a href='/'><header>ГБУ "Жилищник"</a></h1>
 
-<tr>
-<td>
-<table
-border="1"
-background="images/168.png"
-bgcolor="#7FFFD4"
-cellpadding="10"
-style="width:100%; border-radius:5px;">
-<tr>
-<th>
-<div><h1><i><a href="/">ГБУ "Жилищник"</a></i></h1>
-</div>
-<h3></h3>
+<table bgcolor="#FFA07A" cellpadding="40" style="width:100%">
+<div class="">
+<td rowspan="2" style="width:80%">
+<p style="text-align: left"><a href="/"><button>Просмотреть заявки</button></a></p>
+<p style="text-align: left"><a href="/"><button>Просмотреть ответы</button></a></p>
+<p style="text-align: left"><a href="http://127.0.0.1:8000/search-form/"><button>Поиск ответов</button></a></p>
 
-</th>
-</tr>
-</table>
-
-<table border="1" bgcolor="#FFA07A" cellpadding="10" style="width:100%; border-radius:5px;">
-<tr>
-<td
-rowspan="2"
-style="width:80%">
-<h2>Главная</h2>
-<p style="text-indent:20px">
 {% block content %}
 {% endblock %}
-</p>
 
-<p style="text-indent:20px"></p>
+<p></p>
 </td>
 
 <td bgcolor="#FFA07A">
 <h3>Меню</h3>
-<p>
-
-<a href="http://bus.gov.ru/pub/home">
-<span style="margin-left:5px;">http://bus.gov.ru/pub/home</span></a>
-</p>
-<p>
-<a href="">
-<img src="">
-<span style="margin-left:5px;"></span;></a>
-</p>
-<p>
-<a href="">
-<img src="">
-<span style="margin-left:5px;"></span></a>
-</p></td></tr>
-
+<h4><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">
+<span style="margin-left:5px;">Администрирование</span></a></h4>
+<p>Ссылки:<p><a href="http://bus.gov.ru/pub/home">
+<span style="margin-left:5px;">Официальный сайт для ГБУ</span></a></p>
+<p><a href="https://ru.wikipedia.org/wiki/%D0%96%D0%B8%D0%BB%D0%B8%D1%89%D0%BD%D0%BE-%D0%BA%D0%BE%D0%BC%D0%BC%D1%83%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D1%85%D0%BE%D0%B7%D1%8F%D0%B9%D1%81%D1%82%D0%B2%D0%BE">
+<span style="margin-left:5px;">Википедия</span></a></p></p>
 <tr><td bgcolor="#FFA07A" align="center">
-<h3>Общая информация</h3>
+<h3></h3>
 <p></p>
 </td>
 </tr>
@@ -77,14 +63,8 @@ height="100"
 cellpadding="10"
 style="width:100%; border-radius:5px;">
 
-<tr>
-<th>
-<h3></h3>
-
-</th>
-</tr>
 </table>
-
+</div>
 </td>
 </tr>
 </table>
