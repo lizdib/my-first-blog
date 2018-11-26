@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="ru">
 <head>
-<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset="utf-8""/>
 <title>ГБУ "Жилищник"</title>
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -15,19 +15,6 @@
 
 <table bgcolor="#FFA07A" cellpadding="40" style="width:100%">
 <td rowspan="2" style="width:80%">
-<p style="text-align: left"><a href="/"><button>Просмотреть заявки</button></a></p>
-<p style="text-align: left"><a href="/"><button>Просмотреть ответы</button></a></p>
-<p style="text-align: left"><a href="http://127.0.0.1:8000/search-form.html"><button>Поиск ответов</button></a></p>
-
-<form>
- Фамилия заявителя:<br>
- <input type="text" name="name_of_inhabitant"><br>
- Номер заявки:<br>
- <input type="text" name="title1"><br>
- Номер ответа:<br>
- <input type="text" name="title"><br>
- <input type="submit" value="Submit">
-</form>
 
 {% for Request in rep %}
    <a href="http://127.0.0.1:8000/admin/blog/request/"><h3><b>Заявка №{{ Request.title1 }}</b></h3></a>
@@ -53,6 +40,24 @@
 
 <td bgcolor="#FFA07A">
 <h3>Меню</h3>
+<h4>Возможные действия:</h4>
+<p style="text-align: left"><a href="/"><button>Просмотреть заявки</button></a></p>
+<p style="text-align: left"><a href="/"><button>Просмотреть ответы</button></a></p>
+<p style="text-align: left"><a href="http://127.0.0.1:8000/search-form/"><button>Поиск ответов</button></a></p>
+
+<form>
+<fieldset>
+<legend>Что мы ищем?</legend>
+ Фамилия заявителя:<br>
+ <input type="text" name="name_of_inhabitant"><br>
+ Номер заявки:<br>
+ <input type="text" name="title1"><br>
+ Номер ответа:<br>
+ <input type="text" name="title"><br>
+ <input type="submit" value="Submit">
+</fieldset>
+</form>
+
 <h4><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">
 <span style="margin-left:5px;">Администрирование</span></a></h4>
 <p>Ссылки:<p><a href="http://bus.gov.ru/pub/home">
