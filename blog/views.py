@@ -33,3 +33,11 @@ def search(request):
             {'rep': rep, 'query': q})
     else:
         return render_to_response('search_form.html', {'error': True})
+
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        req = Request.objects.filter(title__icontains=q)
+        return render_to_response('search_results.html',
+            {'req': req, 'query': q})
+    else:
+        return render_to_response('search_form.html', {'error': True})

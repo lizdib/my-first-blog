@@ -6,7 +6,7 @@
 <p>You searched for: <strong>{{ query }}</strong></p>
 
 {% if rep %}
-    <p>Found {{ Reply|length }} Reply{{ Reply|pluralize }}.</p>
+    <p>Found Reply:</p>
     <ul>
         {% for Reply in rep %}
         <li>{{ Reply.title }}</li>
@@ -14,6 +14,17 @@
     </ul>
 {% else %}
     <p>No replies matched your search criteria.</p>
+{% endif %}
+
+{% if req %}
+    <p>Found Request:</p>
+    <ul>
+        {% for Request in req %}
+        <li>{{ Request.title1 }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No requests matched your search criteria.</p>
 {% endif %}
 </body>
 </html>
