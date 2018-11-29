@@ -7,12 +7,12 @@ from .models import Reply
 from .models import Request
 
 def Request_list(request):
-    req = Request.objects.filter(published_date__lte=timezone.now()).order_by('title1')
-    return render(request, 'blog/post_list.html', {'req': req})
+    req = Request.objects.order_by('title1')
+    return render(request, 'show_requests.html', {'req': req})
 
 def Reply_list(request):
-    rep = Reply.objects.filter(published_date__lte=timezone.now()).order_by('title')
-    return render(request, 'blog/post_list.html', {'rep': rep})
+    rep = Reply.objects.order_by('title')
+    return render(request, 'show_replies.html', {'rep': rep})
 
 def Request_detail(request, pk):
     req = get_object_or_404(Request, pk=pk)
@@ -26,18 +26,19 @@ def search_form(request):
     return render_to_response('search_form.html')
 
 def search(request):
-    if 'q' in request.GET and request.GET['q']:
-        q = request.GET['q']
-        rep = Reply.objects.filter(title__icontains=q)
+    if 'tit' in request.GET and request.GET['tit'] and 'name' in request.GET and request.GET['name']:
+        tit = request.GET['tit']
+        name = request.GET['name']
+        rep = Reply.objects.filter(title__icontains=tit) | Reply.objects.filter(title__icontains=name)
         return render_to_response('search_results.html',
-            {'rep': rep, 'query': q})
+            {'rep': rep, 'query': tit})
     else:
         return render_to_response('search_form.html', {'error': True})
 
-    if 'q' in request.GET and request.GET['q']:
-        q = request.GET['q']
-        req = Request.objects.filter(title__icontains=q)
+    if 'titl' in request.GET and request.GET['titl']:
+        titl = request.GET['titl']
+        req = Request.objects.filter(title__icontains=titl)
         return render_to_response('search_results.html',
-            {'req': req, 'query': q})
+            {'req': req, 'query': titl})
     else:
         return render_to_response('search_form.html', {'error': True})

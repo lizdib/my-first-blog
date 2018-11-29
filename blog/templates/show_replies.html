@@ -1,0 +1,11 @@
+{% extends 'blog/post_list.html' %}
+{% block content %}
+{% for Reply in rep %}
+   <a href="/"><h3><b>Ответ №{{ Reply.title }}</b></h3></a>
+   <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
+   <p>Наименование организации: {{ Reply.name_of_organisation|linebreaksbr }}</p>
+   <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
+   <p>Дата: {{ Reply.created_date }}</p>
+   <hr align="left" width="300" size="4" color="#ADFF2F" />
+{% endfor %}
+{% endblock %}

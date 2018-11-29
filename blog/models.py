@@ -2,34 +2,62 @@ from django.db import models
 from django.utils import timezone
 
 class Reply(models.Model):
-    title = models.CharField(max_length=200, default='')
-    name_of_inhabitant = models.CharField(max_length=200, blank=False)
+    title = models.CharField(max_length=20, default='')
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
-    name_of_organisation = models.CharField(max_length=200, blank=False)
+    name_of_organisation = models.CharField(max_length=30, blank=False)
     result = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.title
 
 class Request(models.Model):
-    title1 = models.CharField(max_length=200, default='')
-    name_of_inhabitant1 = models.CharField(max_length=200, blank=False)
+    title = models.CharField(max_length=20, default='')
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
     reason = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.title1
+
+class Reply_register(models.Model):
+    title = models.CharField(max_length=20, default='')
+    reply_number = models.BigIntegerField(blank=False)
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
+    result = models.TextField()
+    name_of_doer = models.CharField(max_length=100, blank=False)
+    request_status = models.CharField(max_length=10, blank=False)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.title
+
+class Request_register(models.Model):
+    title = models.CharField(max_length=20, default='')
+    request_number = models.BigIntegerField(blank=False)
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
+    phone_number = models.CharField(max_length=20)
+    email = models.EmailField(blank=True)
+    reason = models.TextField()
+    name_of_doer = models.CharField(max_length=100, blank=False)
+    request_status = models.CharField(max_length=10, blank=False)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.title

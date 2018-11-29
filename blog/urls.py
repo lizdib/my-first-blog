@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^Request/(?P<pk>\d+)/$', views.Request_detail, name='Request_detail'),
     url(r'^search-form/$', views.search_form),
     url(r'^search/$', views.search),
+    url(r'^show_requests/$', views.Request_list),
+    url(r'^show_replies/$', views.Reply_list),
 ]
