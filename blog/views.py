@@ -3,16 +3,28 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.utils import timezone
 from .forms import ReplyForm
 from .forms import RequestForm
+from .forms import Reply_registerForm
+from .forms import Request_registerForm
 from .models import Reply
 from .models import Request
+from .models import Reply_register
+from .models import Request_register
 
 def Request_list(request):
-    req = Request.objects.order_by('title1')
+    req = Request.objects.order_by('title')
     return render(request, 'show_requests.html', {'req': req})
 
 def Reply_list(request):
     rep = Reply.objects.order_by('title')
     return render(request, 'show_replies.html', {'rep': rep})
+
+def Request_register_list(request):
+    req = Request_register.objects.order_by('title')
+    return render(request, 'show_request_register.html', {'req': req})
+
+def Reply__register_list(request):
+    rep = Reply_register.objects.order_by('title')
+    return render(request, 'show_reply_register.html', {'rep': rep})
 
 def Request_detail(request, pk):
     req = get_object_or_404(Request, pk=pk)
