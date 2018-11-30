@@ -24,7 +24,7 @@ p {
 color: #122A0A;
 padding-left: 40px;
 font-size: 130%;
-font-family: 'Sedgwick Ave', cursive;
+font-family: 'Exo 2', sans-serif;
 }
 
 header {
@@ -37,3 +37,10 @@ header {
 form {
   padding-left: 30px;
 }
+
+hr {
+   border: none;
+   background-color: #59ADEE;
+   color: #59ADEE;
+   height: 2px
+  }

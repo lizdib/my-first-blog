@@ -7,12 +7,12 @@ from .models import Request_register
 class ReplyForm(forms.ModelForm):
     class Meta:
         model = Reply
-        fields = ('title', 'name_of_inhabitant', 'name_of_organisation', 'result')
+        fields = ('id', 'name_of_inhabitant', 'name_of_organisation', 'result')
 
 class RequestForm(forms.ModelForm):
     class Meta:
         model = Request
-        fields = ('title', 'name_of_inhabitant', 'phone_number', 'email', 'reason')
+        fields = ('id', 'name_of_inhabitant', 'phone_number', 'email', 'reason')
 
 class Reply_registerForm(forms.ModelForm):
     class Meta:

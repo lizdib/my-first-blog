@@ -1,7 +1,7 @@
 {% extends 'blog/post_list.html' %}
 
 {% block content %}
-<h3><b>Заявка №{{ Request.title }}</b></h3>
+<h3><b>ID {{ Request.id }}</b></h3>
 <p>ФИО потребителя: {{ Request.name_of_inhabitant|linebreaksbr }}</p>
 <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
 <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>

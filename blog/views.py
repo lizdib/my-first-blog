@@ -11,11 +11,11 @@ from .models import Reply_register
 from .models import Request_register
 
 def Request_list(request):
-    req = Request.objects.order_by('title')
+    req = Request.objects.order_by('id')
     return render(request, 'show_requests.html', {'req': req})
 
 def Reply_list(request):
-    rep = Reply.objects.order_by('title')
+    rep = Reply.objects.order_by('id')
     return render(request, 'show_replies.html', {'rep': rep})
 
 def Request_register_list(request):

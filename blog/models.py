@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 class Reply(models.Model):
-    title = models.CharField(max_length=20, default='')
-    name_of_inhabitant = models.CharField(max_length=100, blank=False, primary_key=True, serialize=False)
+    id = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     name_of_organisation = models.CharField(max_length=30, blank=False)
     result = models.TextField()
@@ -13,11 +13,11 @@ class Reply(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.id
 
 class Request(models.Model):
-    title = models.CharField(max_length=20, default='')
-    name_of_inhabitant = models.CharField(max_length=100, blank=False, primary_key=True, serialize=False)
+    id = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
+    name_of_inhabitant = models.CharField(max_length=100, blank=False)
     #ForeignKey('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
@@ -28,12 +28,12 @@ class Request(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.id
 
 class Reply_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    reply_number = models.BigIntegerField(primary_key=True, serialize=False, verbose_name='ID', blank=False)
-    name_of_inhabitant = models.CharField(max_length=100, blank=False)
+    reply_number = models.CharField(max_length=20, primary_key=True, serialize=False, blank=False)
+    name_of_inhabitant = models.ForeignKey(Reply)
     result = models.TextField()
     name_of_doer = models.CharField(max_length=100, blank=False)
     request_status = models.CharField(max_length=10, blank=False)
@@ -47,8 +47,8 @@ class Reply_register(models.Model):
 
 class Request_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    request_number = models.BigIntegerField(primary_key=True, serialize=False, verbose_name='ID', blank=False)
-    name_of_inhabitant = models.CharField(max_length=100, blank=False)
+    request_number = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
+    name_of_inhabitant = models.ForeignKey(Request)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
     reason = models.TextField()

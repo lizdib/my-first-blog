@@ -8,12 +8,12 @@ from .models import Request_register
 #admin.site.register(Request)
 
 class ReplyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'name_of_inhabitant', 'name_of_organisation', 'result', 'created_date')
+    list_display = ('id', 'name_of_inhabitant', 'name_of_organisation', 'result', 'created_date')
 
 admin.site.register(Reply, ReplyAdmin)
 
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ('title', 'name_of_inhabitant', 'phone_number', 'email', 'reason', 'created_date')
+    list_display = ('id', 'name_of_inhabitant', 'phone_number', 'email', 'reason', 'created_date')
 
 admin.site.register(Request, RequestAdmin)
 
