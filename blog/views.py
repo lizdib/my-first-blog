@@ -19,12 +19,12 @@ def Reply_list(request):
     return render(request, 'show_replies.html', {'rep': rep})
 
 def Request_register_list(request):
-    req = Request_register.objects.order_by('title')
-    return render(request, 'show_request_register.html', {'req': req})
+    reqreg = Request_register.objects.order_by('title')
+    return render(request, 'show_request_register.html', {'reqreg': reqreg})
 
-def Reply__register_list(request):
-    rep = Reply_register.objects.order_by('title')
-    return render(request, 'show_reply_register.html', {'rep': rep})
+def Reply_register_list(request):
+    repreg = Reply_register.objects.order_by('title')
+    return render(request, 'show_reply_register.html', {'repreg': repreg})
 
 def Request_detail(request, pk):
     req = get_object_or_404(Request, pk=pk)
@@ -33,6 +33,14 @@ def Request_detail(request, pk):
 def Reply_detail(request, pk):
     rep = get_object_or_404(Reply, pk=pk)
     return render(request, 'blog/Reply_detail.html', {'Reply': rep})
+
+def Request_register_detail(request, pk):
+    reqreg = get_object_or_404(Request_register, pk=pk)
+    return render(request, 'blog/Request_register_detail.html', {'Request_register': reqreg})
+
+def Reply_register_detail(request, pk):
+    repreg = get_object_or_404(Reply_register, pk=pk)
+    return render(request, 'blog/Reply_register_detail.html', {'Reply_register': repreg})
 
 def search_form(request):
     return render_to_response('search_form.html')

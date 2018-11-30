@@ -16,8 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Reply_register',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reply_number', models.BigIntegerField()),
+                ('reply_number', models.BigIntegerField(primary_key=True, serialize=False, verbose_name='ID')),
                 ('name_of_inhabitant', models.CharField(max_length=100)),
                 ('result', models.TextField()),
                 ('name_of_doer', models.CharField(max_length=100)),
@@ -28,8 +27,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Request_register',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('request_number', models.BigIntegerField()),
+                ('request_number', models.BigIntegerField(primary_key=True, serialize=False, verbose_name='ID')),
                 ('name_of_inhabitant', models.CharField(max_length=100)),
                 ('phone_number', models.CharField(max_length=20)),
                 ('email', models.EmailField(blank=True, max_length=254)),

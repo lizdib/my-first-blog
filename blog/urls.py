@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^search/$', views.search),
     url(r'^show_requests/$', views.Request_list),
     url(r'^show_replies/$', views.Reply_list),
-    url(r'^show_request_register/$', views.Request_register),
-    url(r'^show_reply_register/$', views.Reply_register),
+    url(r'^show_request_register/$', views.Request_register_list),
+    url(r'^show_reply_register/$', views.Reply_register_list),
 ]

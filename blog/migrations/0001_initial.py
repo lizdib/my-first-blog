@@ -17,9 +17,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Reply',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(default='', max_length=200)),
-                ('name_of_inhabitant', models.CharField(max_length=200)),
+                ('name_of_inhabitant', models.CharField(max_length=200, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name_of_organisation', models.CharField(max_length=200)),
                 ('result', models.TextField()),
                 ('created_date', models.DateTimeField(default=django.utils.timezone.now)),
@@ -29,9 +28,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Request',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title1', models.CharField(default='', max_length=200)),
-                ('name_of_inhabitant1', models.CharField(max_length=200)),
+                ('name_of_inhabitant1', models.CharField(max_length=200, primary_key=True, serialize=False, verbose_name='ID')),
                 ('phone_number', models.CharField(max_length=20)),
                 ('email', models.EmailField(blank=True, max_length=254)),
                 ('reason', models.TextField()),

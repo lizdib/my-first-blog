@@ -1,13 +1,10 @@
 {% extends 'blog/post_list.html' %}
 {% block content %}
-{% for Reply_register in repreg %}
-   <h3><b>{{ Reply_register.title }}</b></h3></a>
+   <h3><b>Название: {{ Reply_register.title }}</b></h3></a>
    <p>Номер ответа: {{ Reply_register.reply_number }}</p>
    <p>ФИО потребителя: {{ Reply_register.name_of_inhabitant|linebreaksbr }}</p>
    <p>Результат работы: {{ Reply_register.result|linebreaksbr }}</p>
    <p>ФИО исполнителя: {{ Reply_register.name_of_doer }}</p>
    <p>Статус заявки: {{ Reply_register.request_status }}</p>
    <p>Дата: {{ Reply_register.created_date }}</p>
-   <hr align="left" width="300" size="4" color="#ADFF2F" />
-{% endfor %}
 {% endblock %}

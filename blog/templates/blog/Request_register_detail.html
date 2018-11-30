@@ -1,7 +1,6 @@
 {% extends 'blog/post_list.html' %}
 {% block content %}
-{% for Request_register in reqreg %}
-   <h3><b>{{ Request_register.title }}</b></h3></a>
+   <h3><b>Название: {{ Request_register.title }}</b></h3></a>
    <p>Номер заявки: {{ Request_register.request_number }}</p>
    <p>ФИО потребителя: {{ Request_register.name_of_inhabitant|linebreaksbr }}</p>
    <p>Телефон потребителя: {{ Request_register.phone_number|linebreaksbr }}</p>
@@ -10,6 +9,4 @@
    <p>ФИО исполнителя: {{ Request_register.name_of_doer }}</p>
    <p>Статус заявки: {{ Request_register.request_status }}</p>
    <p>Дата: {{ Request_register.created_date }}</p>
-   <hr align="left" width="300" size="10" color="#ADFF2F" />
-{% endfor %}
 {% endblock %}
