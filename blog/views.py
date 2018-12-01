@@ -91,32 +91,3 @@ def Request_edit(request, pk):
     else:
         form = RequestForm(instance=req)
     return render(request, 'blog/Request_edit.html', {'Request': form})
-
-def Reply_sum(request):
-    r = Reply.objects.count()
-    return render(request, 'show_reply_register.html', {'Reply': r})
-
-def Request_sum(request):
-    t = Request.objects.count()
-    return render(request, 'show_request_register.html', {'Request': t})
-
-def search_form(request):
-    return render_to_response('search_form.html')
-
-def search(request):
-    if 'tit' in request.GET and request.GET['tit'] and 'name' in request.GET and request.GET['name']:
-        tit = request.GET['tit']
-        name = request.GET['name']
-        rep = Reply.objects.filter(title__icontains=tit) | Reply.objects.filter(title__icontains=name)
-        return render_to_response('search_results.html',
-            {'rep': rep, 'query': tit})
-    else:
-        return render_to_response('search_form.html', {'error': True})
-
-    if 'titl' in request.GET and request.GET['titl']:
-        titl = request.GET['titl']
-        req = Request.objects.filter(title__icontains=titl)
-        return render_to_response('search_results.html',
-            {'req': req, 'query': titl})
-    else:
-        return render_to_response('search_form.html', {'error': True})
