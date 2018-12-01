@@ -17,51 +17,31 @@
 <table bgcolor="#FFA07A" cellpadding="40" style="width:100%">
 <td rowspan="2" style="width:80%">
 
+<p style="background:#FFFFCC; margin: 25px">ГБУ Жилищник — это государственное (муниципальное) бюджетное учреждение, оказывающее услуги по управлению домом в сфере жилищно-коммунального хозяйства.
+В обязанности организаций, помимо управления домом входят также обязанности по благоустройству дворовых территорий и дорог общего пользования.
+По сути это государственные управляющие компании, которые были созданы на базе ДЕЗов. В отличии от ЖСК и ДЕЗ, Жилищник сам нанимает персонал для выполнения работ, а не нанимает подрядчиков.
+ГБУ Жилищник является новым проектом, который действует в Москве с июля 2014 года.</p>
+<br><br><br>
+
 {% block content %}
 {% endblock %}
-<!--{% for Request in rep %}
-   <a href="http://127.0.0.1:8000/admin/blog/request/"><h3><b>Заявка №{{ Request.title1 }}</b></h3></a>
-   <p>ФИО потребителя: {{ Request.name_of_inhabitant1|linebreaksbr }}</p>
-   <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
-   <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
-   <p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
-   <p>Дата: {{ Request.created_date }}</p>
-   <hr align="left" width="300" size="10" color="#ADFF2F" />
-{% endfor %}
-
-{% for Reply in rep %}
-   <a href="http://127.0.0.1:8000/admin/blog/reply/"><h3><b>Ответ №{{ Reply.title }}</b></h3></a>
-   <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
-   <p>Наименование организации: {{ Reply.name_of_organisation|linebreaksbr }}</p>
-   <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
-   <p>Дата: {{ Reply.created_date }}</p>
-   <hr align="left" width="300" size="4" color="#ADFF2F" />
-{% endfor %}-->
-
 
 </td>
 
 <td bgcolor="#FFA07A">
 <h3>Меню</h3>
 <h4>Возможные действия:</h4>
+{% if user.is_authenticated %}
+<p style="text-align: left"><a href="http://127.0.0.1:8000/Request/new/"><button>Добавить заявку</button></a></p>
+{% endif %}
+{% if user.is_authenticated %}
+<p style="text-align: left"><a href="http://127.0.0.1:8000/Reply/new/"><button>Добавить ответ</button></a></p>
+{% endif %}
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_requests/"><button>Просмотреть заявки</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_replies/"><button>Просмотреть ответы</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_request_register/"><button>Просмотреть журнал заявок</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_reply_register/"><button>Просмотреть журнал ответов</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/search-form/"><button>Поиск</button></a></p>
-
-<!--<form>
-<fieldset>
-<legend>Что мы ищем?</legend>
- Фамилия заявителя:<br>
- <input type="text" name="name_of_inhabitant"><br>
- Номер заявки:<br>
- <input type="text" name="title1"><br>
- Номер ответа:<br>
- <input type="text" name="title"><br>
- <input type="submit" value="Submit">
-</fieldset>
-</form>-->
 
 <h4><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">
 <span style="margin-left:5px;">Администрирование</span></a></h4>
@@ -82,13 +62,8 @@ bgcolor="#7FFFD4"
 height="100"
 cellpadding="10"
 style="width:100%; border-radius:5px;">
-<p> </p>
-<p> </p>
+<p></p>
 
-<p>ГБУ Жилищник — это государственное (муниципальное) бюджетное учреждение, оказывающее услуги по управлению домом в сфере жилищно-коммунального хозяйства.
-  В обязанности организаций, помимо управления домом входят также обязанности по благоустройству дворовых территорий и дорог общего пользования.
-  По сути это государственные управляющие компании, которые были созданы на базе ДЕЗов. В отличии от ЖСК и ДЕЗ, Жилищник сам нанимает персонал для выполнения работ, а не нанимает подрядчиков.
-  ГБУ Жилищник является новым проектом, который действует в Москве с июля 2014 года.</p>
 </table>
 </td>
 </tr>

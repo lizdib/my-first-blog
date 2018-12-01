@@ -1,0 +1,14 @@
+{% extends 'blog/post_list.html' %}
+
+{% block content %}
+    <h3>Новый ответ</h3>
+    <form method="POST" class="post-form">{% csrf_token %}
+      <p>ID</p>
+      <p>{{ Reply.id }}</p>
+      <p>ФИО потребителя:</p>
+      <p>{{ Reply.name_of_inhabitant }}</p>
+      <p>Результат работы:</p>
+      <p>{{ Reply.result }}</p>
+      <button type="submit" class="save btn btn-default">Сохранить</button>
+    </form>
+{% endblock %}

@@ -4,8 +4,6 @@ from django.utils import timezone
 class Reply(models.Model):
     id = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
     name_of_inhabitant = models.CharField(max_length=100, blank=False)
-    #ForeignKey('auth.User', on_delete=models.CASCADE)
-    name_of_organisation = models.CharField(max_length=30, blank=False)
     result = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
 
@@ -18,7 +16,6 @@ class Reply(models.Model):
 class Request(models.Model):
     id = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
     name_of_inhabitant = models.CharField(max_length=100, blank=False)
-    #ForeignKey('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
     reason = models.TextField()

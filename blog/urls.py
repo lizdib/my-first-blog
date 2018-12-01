@@ -12,4 +12,8 @@ urlpatterns = [
     url(r'^show_replies/$', views.Reply_list),
     url(r'^show_request_register/$', views.Request_register_list),
     url(r'^show_reply_register/$', views.Reply_register_list),
+    url(r'^Reply/new/$', views.Reply_new, name='Reply_new'),
+    url(r'^Reply/(?P<pk>\d+)/edit/$', views.Reply_edit, name='Reply_edit'),
+    url(r'^Request/new/$', views.Request_new, name='Request_new'),
+    url(r'^Request/(?P<pk>\d+)/edit/$', views.Request_edit, name='Request_edit'),
 ]

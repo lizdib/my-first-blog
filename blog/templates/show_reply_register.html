@@ -1,7 +1,7 @@
 {% extends 'blog/post_list.html' %}
 {% block content %}
 {% for Reply_register in repreg %}
-   <h3><b>{{ Reply_register.title }}</b></h3></a>
+   <h3><b>{{ Reply_register.title }}</b></h3>
    <p>Номер ответа: {{ Reply_register.reply_number }}</p>
    <p>ID потребителя: {{ Reply_register.name_of_inhabitant|linebreaksbr }}</p>
    <p>Результат работы: {{ Reply_register.result|linebreaksbr }}</p>

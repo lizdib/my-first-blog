@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.utils import timezone
 from .forms import ReplyForm
 from .forms import RequestForm
@@ -41,6 +41,58 @@ def Request_register_detail(request, pk):
 def Reply_register_detail(request, pk):
     repreg = get_object_or_404(Reply_register, pk=pk)
     return render(request, 'blog/Reply_register_detail.html', {'Reply_register': repreg})
+
+def Reply_new(request):
+    if request.method == "POST":
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            Reply = form.save(commit=False)
+            Reply.author = request.user
+            Reply.published_date = timezone.now()
+            Reply.save()
+            return redirect('Reply_detail', pk=Reply.pk)
+    else:
+        form = ReplyForm()
+    return render(request, 'blog/Reply_edit.html', {'Reply': form})
+
+def Reply_edit(request, pk):
+    rep = get_object_or_404(Reply, pk=pk)
+    if request.method == "POST":
+        form = ReplyForm(request.POST, instance=rep)
+        if form.is_valid():
+            rep = form.save(commit=False)
+            rep.author = request.user
+            rep.published_date = timezone.now()
+            rep.save()
+            return redirect('Reply_detail', pk=Reply.pk)
+    else:
+        form = ReplyForm(instance=rep)
+    return render(request, 'blog/Reply_edit.html', {'Reply': form})
+
+def Request_new(request):
+    if request.method == "POST":
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            Request = form.save(commit=False)
+            Request.author = request.user
+            Request.save()
+            return redirect('Request_detail', pk=Request.pk)
+    else:
+        form = RequestForm()
+    return render(request, 'blog/Request_edit.html', {'Request': form})
+
+def Request_edit(request, pk):
+    req = get_object_or_404(Request, pk=pk)
+    if request.method == "POST":
+        form = RequestForm(request.POST, instance=req)
+        if form.is_valid():
+            req = form.save(commit=False)
+            req.author = request.user
+            req.save()
+            return redirect('Request_detail', pk=Request.pk)
+    else:
+        form = RequestForm(instance=req)
+    return render(request, 'blog/Request_edit.html', {'Request': form})
 
 def search_form(request):
     return render_to_response('search_form.html')

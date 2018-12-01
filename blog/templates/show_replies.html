@@ -1,7 +1,7 @@
 {% extends 'blog/post_list.html' %}
 {% block content %}
 {% for Reply in rep %}
-   <h3><b>ID {{ Reply.id }}</b></h3></a>
+   <h3><b>ID {{ Reply.id }}</b></h3>
    <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
    <p>Наименование организации: {{ Reply.name_of_organisation|linebreaksbr }}</p>
    <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
