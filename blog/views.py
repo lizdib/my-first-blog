@@ -48,7 +48,6 @@ def Reply_new(request):
         if form.is_valid():
             Reply = form.save(commit=False)
             Reply.author = request.user
-            Reply.published_date = timezone.now()
             Reply.save()
             return redirect('Reply_detail', pk=Reply.pk)
     else:
@@ -62,7 +61,6 @@ def Reply_edit(request, pk):
         if form.is_valid():
             rep = form.save(commit=False)
             rep.author = request.user
-            rep.published_date = timezone.now()
             rep.save()
             return redirect('Reply_detail', pk=Reply.pk)
     else:
@@ -93,6 +91,14 @@ def Request_edit(request, pk):
     else:
         form = RequestForm(instance=req)
     return render(request, 'blog/Request_edit.html', {'Request': form})
+
+def Reply_sum(request):
+    r = Reply.objects.count()
+    return render(request, 'show_reply_register.html', {'Reply': r})
+
+def Request_sum(request):
+    t = Request.objects.count()
+    return render(request, 'show_request_register.html', {'Request': t})
 
 def search_form(request):
     return render_to_response('search_form.html')
