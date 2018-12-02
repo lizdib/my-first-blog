@@ -4,7 +4,7 @@ from django.utils import timezone
 class Reply(models.Model):
     id = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
     name_of_inhabitant = models.CharField(max_length=100, blank=False)
-    result = models.TextField()
+    result = models.CharField(max_length=100, blank=False)
     created_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):
@@ -18,7 +18,7 @@ class Request(models.Model):
     name_of_inhabitant = models.CharField(max_length=100, blank=False)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
-    reason = models.TextField()
+    reason = models.CharField(max_length=100, blank=False)
     created_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):
@@ -29,9 +29,9 @@ class Request(models.Model):
 
 class Reply_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    reply_number = models.CharField(max_length=20, primary_key=True, serialize=False, blank=False)
-    name_of_inhabitant = models.ForeignKey(Reply)
-    result = models.TextField()
+    reply_number = models.ForeignKey(Reply, primary_key=True)
+    name_of_inhabitant = models.CharField(max_length=20, unique=False, blank=False)
+    result = models.CharField(max_length=100, blank=False)
     name_of_doer = models.CharField(max_length=100, blank=False)
     request_status = models.CharField(max_length=10, blank=False)
     created_date = models.DateTimeField(default=timezone.now)
@@ -44,11 +44,11 @@ class Reply_register(models.Model):
 
 class Request_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    request_number = models.CharField(max_length=20, primary_key=True, serialize=False, verbose_name='ID', blank=False)
-    name_of_inhabitant = models.ForeignKey(Request)
+    request_number = models.ForeignKey(Request, primary_key=True)
+    name_of_inhabitant = models.CharField(max_length=20, unique=False, blank=False)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
-    reason = models.TextField()
+    reason = models.CharField(max_length=100, blank=False)
     name_of_doer = models.CharField(max_length=100, blank=False)
     request_status = models.CharField(max_length=10, blank=False)
     created_date = models.DateTimeField(default=timezone.now)
