@@ -92,22 +92,24 @@ def Request_edit(request, pk):
         form = RequestForm(instance=req)
     return render(request, 'blog/Request_edit.html', {'Request': form})
 
+def Reply_remove(request, pk):
+    reply = get_object_or_404(Reply, pk=pk)
+    reply.delete()
+    return redirect('Reply_list')
+
+def Request_remove(request, pk):
+    req = get_object_or_404(Request, pk=pk)
+    req.delete()
+    return redirect('Request_list')
+
 def search_form(request):
     return render_to_response('search_form.html')
 
 def search(request):
-    if 'f' in request.GET and request.GET['f']:
-        f = request.GET['f']
-        requests = Request.objects.filter(id__icontains=f)
-        return render_to_response('search_requests.html',
-            {'requests': requests, 'query': f})
-    else:
-        return render_to_response('search_form.html', {'error': True})
-        
-    if 'q' in request.GET and request.GET['q']:
-        q = request.GET['q']
-        replies = Reply.objects.filter(id__icontains=q)
+    if 't' in request.GET and request.GET['t']:
+        t = request.GET['t']
+        replies = Reply.objects.filter(name_of_inhabitant__icontains=t)
         return render_to_response('search_replies.html',
-            {'replies': replies, 'query': q})
+            {'replies': replies, 'query': t})
     else:
         return render_to_response('search_form.html', {'error': True})

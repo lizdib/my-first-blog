@@ -29,7 +29,7 @@ class Request(models.Model):
 
 class Reply_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    reply_number = models.ForeignKey(Reply, primary_key=True)
+    reply_number = models.OneToOneField(Reply, primary_key=True, on_delete=models.DO_NOTHING)
     name_of_inhabitant = models.CharField(max_length=20, unique=False, blank=False)
     result = models.CharField(max_length=100, blank=False)
     name_of_doer = models.CharField(max_length=100, blank=False)
@@ -44,7 +44,7 @@ class Reply_register(models.Model):
 
 class Request_register(models.Model):
     title = models.CharField(max_length=20, default='')
-    request_number = models.ForeignKey(Request, primary_key=True)
+    request_number = models.OneToOneField(Request, primary_key=True, on_delete=models.DO_NOTHING)
     name_of_inhabitant = models.CharField(max_length=20, unique=False, blank=False)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
