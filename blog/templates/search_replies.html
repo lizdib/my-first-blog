@@ -3,8 +3,7 @@
 <html lang="ru">
 <head>
 <meta http-equiv="content-type" content="text/html; charset="utf-8""/>
-<title>ГБУ "Жилищник"</title>
-
+<title>Search results</title>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link href="https://fonts.googleapis.com/css?family=Ranga|Sedgwick+Ave|Exo+2" rel="stylesheet" type="text/css">
@@ -18,16 +17,27 @@
 <td rowspan="2" style="width:80%">
 
 <p style="background:#FFFFCC; margin: 25px">ГБУ Жилищник — это государственное (муниципальное) бюджетное учреждение, оказывающее услуги по управлению домом в сфере жилищно-коммунального хозяйства.
-В обязанности организаций, помимо управления домом входят также обязанности по благоустройству дворовых территорий и дорог общего пользования.
-По сути это государственные управляющие компании, которые были созданы на базе ДЕЗов. В отличии от ЖСК и ДЕЗ, Жилищник сам нанимает персонал для выполнения работ, а не нанимает подрядчиков.
-ГБУ Жилищник является новым проектом, который действует в Москве с июля 2014 года.</p>
+  В обязанности организаций, помимо управления домом входят также обязанности по благоустройству дворовых территорий и дорог общего пользования.
+  По сути это государственные управляющие компании, которые были созданы на базе ДЕЗов. В отличии от ЖСК и ДЕЗ, Жилищник сам нанимает персонал для выполнения работ, а не нанимает подрядчиков.
+  ГБУ Жилищник является новым проектом, который действует в Москве с июля 2014 года.</p>
 <br><br><br>
+<p>You searched for: <strong>{{ query }}</strong></p>
 
-{% block content %}
-{% endblock %}
+{% if replies %}
+    <p>Found Reply:</p>
+    <ul>
+        {% for Reply in replies %}
+        <li><h3><b>ID {{ Reply.id }}</b></h3>
+        <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
+        <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
+        <p>Дата: {{ Reply.created_date }}</p></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No replies matched your search criteria.</p>
+{% endif %}
 
 </td>
-
 <td bgcolor="#FFA07A">
 <h3>Меню</h3>
 <h4>Возможные действия:</h4>
@@ -41,7 +51,6 @@
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_replies/"><button>Просмотреть ответы</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_request_register/"><button>Просмотреть журнал заявок</button></a></p>
 <p style="text-align: left"><a href="http://127.0.0.1:8000/show_reply_register/"><button>Просмотреть журнал ответов</button></a></p>
-<p style="text-align: left"><a href="http://127.0.0.1:8000/search_form/"><button>Поиск</button></a></p>
 
 <h4><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">
 <span style="margin-left:5px;">Администрирование</span></a></h4>
@@ -51,7 +60,6 @@
 <span style="margin-left:5px;">Википедия</span></a></p></p>
 <tr><td bgcolor="#FFA07A" align="center">
 <h3></h3>
-<p></p>
 </td>
 </tr>
 </table>
@@ -65,8 +73,9 @@ style="width:100%; border-radius:5px;">
 <p></p>
 
 </table>
-</td>
-</tr>
-</table>
+
+
+</body>
+</html>
 </body>
 </html>
