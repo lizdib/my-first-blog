@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.utils import timezone
 from .forms import ReplyForm
@@ -9,6 +9,7 @@ from .models import Reply
 from .models import Request
 from .models import Reply_register
 from .models import Request_register
+from django.db.models import Q
 
 def Request_list(request):
     req = Request.objects.order_by('id')
@@ -95,12 +96,12 @@ def Request_edit(request, pk):
 def Reply_remove(request, pk):
     reply = get_object_or_404(Reply, pk=pk)
     reply.delete()
-    return redirect('Reply_list')
+    return HttpResponseRedirect("/")
 
 def Request_remove(request, pk):
     req = get_object_or_404(Request, pk=pk)
     req.delete()
-    return redirect('Request_list')
+    return HttpResponseRedirect("/")
 
 def search_form(request):
     return render_to_response('search_form.html')
@@ -108,8 +109,14 @@ def search_form(request):
 def search(request):
     if 't' in request.GET and request.GET['t']:
         t = request.GET['t']
-        replies = Reply.objects.filter(name_of_inhabitant__icontains=t)
-        return render_to_response('search_replies.html',
-            {'replies': replies, 'query': t})
+        requests = Request.objects.filter(Q(id=t)|Q(name_of_inhabitant=t)|
+        Q(phone_number=t)|Q(email=t)|Q(reason=t))
+        replies = Reply.objects.filter(Q(id=t)|Q(name_of_inhabitant=t)|Q(result=t))
+        repreg = Reply_register.objects.filter(Q(title=t)|Q(reply_number=t)|Q(name_of_inhabitant=t)|
+        Q(result=t)|Q(name_of_doer=t)|Q(request_status=t))
+        reqreg = Request_register.objects.filter(Q(title=t)|Q(request_number=t)|Q(name_of_inhabitant=t)|Q(phone_number=t)|Q(email=t)|
+        Q(reason=t)|Q(name_of_doer=t)|Q(request_status=t))
+        return render_to_response('search_results.html',
+            {'Requests': requests, 'Replies': replies, 'Reply_register': repreg, 'Request_register': reqreg, 'query': t})
     else:
         return render_to_response('search_form.html', {'error': True})

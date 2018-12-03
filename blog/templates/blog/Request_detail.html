@@ -6,5 +6,5 @@
 <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
 <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
 <p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
-<p>Дата: {{ Request.published_date }}</p>
+<a class="btn btn-default" href="{% url 'Request_remove' pk=Request.pk %}"><button>Удалить</button></a>
 {% endblock %}

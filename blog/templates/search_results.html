@@ -21,10 +21,22 @@
   По сути это государственные управляющие компании, которые были созданы на базе ДЕЗов. В отличии от ЖСК и ДЕЗ, Жилищник сам нанимает персонал для выполнения работ, а не нанимает подрядчиков.
   ГБУ Жилищник является новым проектом, который действует в Москве с июля 2014 года.</p>
 <br><br><br>
-<p>You searched for: <strong>{{ query }}</strong></p>
+<p>Вы искали: <strong>{{ query }}</strong></p>
 
-{% if replies %}
-    <p>Found Reply:</p>
+{% if requests or replies or repreg or reqreg %}
+    <p>Найдены заявки:</p>
+    <ul>
+        {% for Request in requests %}
+        <li><h3><b>ID {{ Request.id }}</b></h3>
+        <p>ФИО потребителя: {{ Request.name_of_inhabitant|linebreaksbr }}</p>
+        <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
+        <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
+        <p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
+        <p>Дата: {{ Request.created_date }}</p></li>
+        {% endfor %}
+    </ul>
+
+    <p>Найдены ответы:</p>
     <ul>
         {% for Reply in replies %}
         <li><h3><b>ID {{ Reply.id }}</b></h3>
@@ -33,8 +45,36 @@
         <p>Дата: {{ Reply.created_date }}</p></li>
         {% endfor %}
     </ul>
+
+    <p>Найдено в журналах ответов:</p>
+    <ul>
+        {% for Reply_register in repreg %}
+        <li><h3><b>{{ Reply_register.title }}</b></h3>
+        <p>Номер ответа: {{ Reply_register.reply_number }}</p>
+        <p>ID потребителя: {{ Reply_register.name_of_inhabitant|linebreaksbr }}</p>
+        <p>Результат работы: {{ Reply_register.result|linebreaksbr }}</p>
+        <p>ФИО исполнителя: {{ Reply_register.name_of_doer }}</p>
+        <p>Статус заявки: {{ Reply_register.request_status }}</p>
+        <p>Дата: {{ Reply_register.created_date }}</p></li>
+        {% endfor %}
+    </ul>
+
+    <p>Найдено в журналах заявок:</p>
+    <ul>
+        {% for Request_register in reqreg %}
+        <li><h3><b>{{ Request_register.title }}</b></h3>
+           <p>Номер заявки: {{ Request_register.request_number }}</p>
+           <p>ID потребителя: {{ Request_register.name_of_inhabitant|linebreaksbr }}</p>
+           <p>Телефон потребителя: {{ Request_register.phone_number|linebreaksbr }}</p>
+           <p>E-mail потребителя: {{ Request_register.email|linebreaksbr }}</p>
+           <p>Причина обращения: {{ Request_register.reason|linebreaksbr }}</p>
+           <p>ФИО исполнителя: {{ Request_register.name_of_doer }}</p>
+           <p>Статус заявки: {{ Request_register.request_status }}</p>
+           <p>Дата: {{ Request_register.created_date }}</p></li>
+        {% endfor %}
+    </ul>
 {% else %}
-    <p>No replies matched your search criteria.</p>
+    <p>По Вашему запросу ничего не найдено.</p>
 {% endif %}
 
 </td>
@@ -60,6 +100,7 @@
 <span style="margin-left:5px;">Википедия</span></a></p></p>
 <tr><td bgcolor="#FFA07A" align="center">
 <h3></h3>
+<p></p>
 </td>
 </tr>
 </table>
@@ -73,8 +114,9 @@ style="width:100%; border-radius:5px;">
 <p></p>
 
 </table>
-
-
+</td>
+</tr>
+</table>
 </body>
 </html>
 </body>

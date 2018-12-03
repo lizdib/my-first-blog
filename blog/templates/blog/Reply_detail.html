@@ -4,5 +4,5 @@
 <h3><b>ID {{ Reply.id }}</b></h3>
 <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
 <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
-<p>Дата: {{ Reply.published_date }}</p>
+<a class="btn btn-default" href="{% url 'Reply_remove' pk=Reply.pk %}"><button>Удалить</button></a>
 {% endblock %}
