@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^Request/new/$', views.Request_new, name='Request_new'),
     url(r'^Request/(?P<pk>\d+)/edit/$', views.Request_edit, name='Request_edit'),
     url(r'^search_form/$', views.search_form, name='search_form'),
-    url(r'^search/$', views.search, name='search'),
+    url(r'^search_results/$', views.search, name='search'),
     url(r'^Reply/(?P<pk>[0-9])/remove/$', views.Reply_remove, name='Reply_remove'),
     url(r'^Request/(?P<pk>[0-9])/remove/$', views.Request_remove, name='Request_remove'),
 ]

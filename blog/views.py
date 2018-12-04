@@ -109,14 +109,14 @@ def search_form(request):
 def search(request):
     if 't' in request.GET and request.GET['t']:
         t = request.GET['t']
-        requests = Request.objects.filter(Q(id=t)|Q(name_of_inhabitant=t)|
+        requests = Request.objects.filter(Q(id__icontains=t)|Q(name_of_inhabitant=t)|
         Q(phone_number=t)|Q(email=t)|Q(reason=t))
-        replies = Reply.objects.filter(Q(id=t)|Q(name_of_inhabitant=t)|Q(result=t))
-        repreg = Reply_register.objects.filter(Q(title=t)|Q(reply_number=t)|Q(name_of_inhabitant=t)|
+        replies = Reply.objects.filter(Q(id__icontains=t)|Q(name_of_inhabitant=t)|Q(result=t))
+        repreg = Reply_register.objects.filter(Q(title__icontains=t)|Q(reply_number=t)|Q(name_of_inhabitant=t)|
         Q(result=t)|Q(name_of_doer=t)|Q(request_status=t))
-        reqreg = Request_register.objects.filter(Q(title=t)|Q(request_number=t)|Q(name_of_inhabitant=t)|Q(phone_number=t)|Q(email=t)|
+        reqreg = Request_register.objects.filter(Q(title__icontains=t)|Q(request_number=t)|Q(name_of_inhabitant=t)|Q(phone_number=t)|Q(email=t)|
         Q(reason=t)|Q(name_of_doer=t)|Q(request_status=t))
         return render_to_response('search_results.html',
-            {'Requests': requests, 'Replies': replies, 'Reply_register': repreg, 'Request_register': reqreg, 'query': t})
+            {'requests': requests, 'replies': replies, 'repreg': repreg, 'reqreg': reqreg, 'query': t})
     else:
         return render_to_response('search_form.html', {'error': True})
