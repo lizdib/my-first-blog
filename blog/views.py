@@ -10,14 +10,18 @@ from .models import Request
 from .models import Reply_register
 from .models import Request_register
 from django.db.models import Q
+from datetime import datetime, date, time
 
 def Request_list(request):
     req = Request.objects.order_by('id')
-    return render(request, 'show_requests.html', {'req': req})
+    podate = Request.objects.filter(created_date__year='2018').filter(created_date__month='12')
+    count = Request.objects.count()
+    return render(request, 'show_requests.html', {'req': req, 'podate': podate, 'count': count})
 
 def Reply_list(request):
     rep = Reply.objects.order_by('id')
-    return render(request, 'show_replies.html', {'rep': rep})
+    count = Reply.objects.count()
+    return render(request, 'show_replies.html', {'rep': rep, 'count': count})
 
 def Request_register_list(request):
     reqreg = Request_register.objects.order_by('title')
@@ -109,13 +113,13 @@ def search_form(request):
 def search(request):
     if 't' in request.GET and request.GET['t']:
         t = request.GET['t']
-        requests = Request.objects.filter(Q(id__icontains=t)|Q(name_of_inhabitant=t)|
-        Q(phone_number=t)|Q(email=t)|Q(reason=t))
-        replies = Reply.objects.filter(Q(id__icontains=t)|Q(name_of_inhabitant=t)|Q(result=t))
-        repreg = Reply_register.objects.filter(Q(title__icontains=t)|Q(reply_number=t)|Q(name_of_inhabitant=t)|
-        Q(result=t)|Q(name_of_doer=t)|Q(request_status=t))
-        reqreg = Request_register.objects.filter(Q(title__icontains=t)|Q(request_number=t)|Q(name_of_inhabitant=t)|Q(phone_number=t)|Q(email=t)|
-        Q(reason=t)|Q(name_of_doer=t)|Q(request_status=t))
+        requests = Request.objects.filter(Q(id__iexact=t)|Q(name_of_inhabitant__iexact=t)|
+        Q(phone_number=t)|Q(email__iexact=t)|Q(reason=t))
+        replies = Reply.objects.filter(Q(id__iexact=t)|Q(name_of_inhabitant__iexact=t)|Q(result=t))
+        repreg = Reply_register.objects.filter(Q(title__iexact=t)|Q(reply_number=t)|Q(name_of_inhabitant__iexact=t)|
+        Q(result__iexact=t)|Q(name_of_doer=t)|Q(request_status=t))
+        reqreg = Request_register.objects.filter(Q(title__iexact=t)|Q(request_number=t)|Q(name_of_inhabitant__iexact=t)|Q(phone_number=t)|Q(email__iexact=t)|
+        Q(reason__iexact=t)|Q(name_of_doer=t)|Q(request_status=t))
         return render_to_response('search_results.html',
             {'requests': requests, 'replies': replies, 'repreg': repreg, 'reqreg': reqreg, 'query': t})
     else:

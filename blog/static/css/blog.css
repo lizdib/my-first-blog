@@ -56,3 +56,8 @@ hr {
    color: #59ADEE;
    height: 2px
   }
+
+  .fig {
+    display: block; /* Блочный элемент (для старых браузеров) */
+    text-align: center; 
+  }

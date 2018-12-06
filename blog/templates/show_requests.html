@@ -9,4 +9,15 @@
    <p>Дата: {{ Request.created_date }}</p>
    <hr align="left" width="1000" />
 {% endfor %}
+<br><br>
+<h3>Заявки за декабрь:</h3>
+{% for Request in podate %}
+   <p><a href="{% url 'Request_detail' pk=Request.pk %}"><b>ID {{ Request.id }}</b></a></p>
+   <p>ФИО потребителя: {{ Request.name_of_inhabitant|linebreaksbr }}</p>
+   <p>Дата: {{ Request.created_date }}</p>
+{% endfor %}
+<br>
+<h4>Всего заявок: {{count}}</h4>
+
+
 {% endblock %}
