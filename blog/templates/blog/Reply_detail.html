@@ -5,4 +5,5 @@
 <p>ФИО потребителя: {{ Reply.name_of_inhabitant|linebreaksbr }}</p>
 <p>Результат работы: {{ Reply.result|linebreaksbr }}</p>
 <a class="btn btn-default" href="{% url 'Reply_remove' pk=Reply.pk %}"><button>Удалить</button></a>
+<a class="btn btn-default" href="{% url 'Reply_edit' pk=Reply.pk %}"><button>Редактировать</button></a>
 {% endblock %}

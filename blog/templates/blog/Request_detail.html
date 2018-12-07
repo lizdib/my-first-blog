@@ -7,4 +7,5 @@
 <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
 <p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
 <a class="btn btn-default" href="{% url 'Request_remove' pk=Request.pk %}"><button>Удалить</button></a>
+<a class="btn btn-default" href="{% url 'Request_edit' pk=Request.pk %}"><button>Редактировать</button></a>
 {% endblock %}
