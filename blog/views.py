@@ -9,7 +9,7 @@ from .models import Reply
 from .models import Request
 from .models import Reply_register
 from .models import Request_register
-from django.db.models import Q
+from django.db.models import Q, Count
 from datetime import datetime, date, time
 
 def Request_list(request):
@@ -120,7 +120,11 @@ def search(request):
         Q(result__iexact=t)|Q(name_of_doer=t)|Q(request_status=t))
         reqreg = Request_register.objects.filter(Q(title__iexact=t)|Q(request_number=t)|Q(name_of_inhabitant__iexact=t)|Q(phone_number=t)|Q(email__iexact=t)|
         Q(reason__iexact=t)|Q(name_of_doer=t)|Q(request_status=t))
+        requests1 = Request.objects.filter(name_of_inhabitant__iexact=t).count()
+        kolvo1 = int(requests1)
+        replies1 = Reply.objects.filter(name_of_inhabitant__iexact=t).count()
+        kolvo2 = int(replies1)
         return render_to_response('search_results.html',
-            {'requests': requests, 'replies': replies, 'repreg': repreg, 'reqreg': reqreg, 'query': t})
+            {'requests': requests, 'replies': replies, 'repreg': repreg, 'reqreg': reqreg, 'kolvo1':kolvo1, 'kolvo2':kolvo2, 'query': t})
     else:
         return render_to_response('search_form.html', {'error': True})

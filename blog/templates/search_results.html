@@ -35,6 +35,8 @@
         <p>Дата: {{ Request.created_date }}</p></li>
         {% endfor %}
     </ul>
+    <p>Всего заявок от <strong>{{ query }}</strong>: {{kolvo1}}</p>
+       <br>
 
     <p>Найдены ответы:</p>
     <ul>
@@ -45,7 +47,9 @@
         <p>Дата: {{ Reply.created_date }}</p></li>
         {% endfor %}
     </ul>
-
+      <p>Всего ответов от <strong>{{ query }}</strong>: {{kolvo2}}</p>
+      <br>
+      
     <p>Найдено в журналах ответов:</p>
     <ul>
         {% for Reply_register in repreg %}
