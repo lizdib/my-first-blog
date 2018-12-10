@@ -74,7 +74,7 @@ def Reply_edit(request, pk):
             rep = form.save(commit=False)
             rep.author = request.user
             rep.save()
-            return redirect('Reply_detail', pk=Reply.pk)
+            return redirect('Reply_detail', pk=rep.pk)
     else:
         form = ReplyForm(instance=rep)
     return render(request, 'blog/Reply_edit.html', {'Reply': form})
@@ -101,7 +101,7 @@ def Request_edit(request, pk):
             req = form.save(commit=False)
             req.author = request.user
             req.save()
-            return redirect('Request_detail', pk=Request.pk)
+            return redirect('Request_detail', pk=req.pk)
     else:
         form = RequestForm(instance=req)
     return render(request, 'blog/Request_edit.html', {'Request': form})
