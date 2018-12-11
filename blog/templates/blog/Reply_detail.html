@@ -8,4 +8,14 @@
 <a class="btn btn-default" href="{% url 'Reply_remove' pk=Reply.pk %}"><button>Удалить</button></a>
 <a class="btn btn-default" href="{% url 'Reply_edit' pk=Reply.pk %}"><button>Редактировать</button></a>
 {% endif %}
+
+<br><br>
+<h3>Заявки от {{ Reply.name_of_inhabitant }}:</h3>
+{% for Request in zay %}
+   <p><a href="{% url 'Request_detail' pk=Request.pk %}"><b>ID {{ Request.id }}</b></a></p>
+   <p>Телефон потребителя: {{ Request.phone_number|linebreaksbr }}</p>
+   <p>E-mail потребителя: {{ Request.email|linebreaksbr }}</p>
+   <p>Причина обращения: {{ Request.reason|linebreaksbr }}</p>
+   <p>Дата: {{ Request.created_date }}</p>
+{% endfor %}
 {% endblock %}

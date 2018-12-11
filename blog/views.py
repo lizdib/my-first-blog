@@ -42,7 +42,9 @@ def Request_detail(request, pk):
 
 def Reply_detail(request, pk):
     rep = get_object_or_404(Reply, pk=pk)
-    return render(request, 'blog/Reply_detail.html', {'Reply': rep})
+    replyfio = rep.name_of_inhabitant
+    zay = Request.objects.filter(name_of_inhabitant__iexact = replyfio)
+    return render(request, 'blog/Reply_detail.html', {'Reply': rep, 'zay': zay})
 
 def Request_register_detail(request, pk):
     reqreg = get_object_or_404(Request_register, pk=pk)
@@ -108,8 +110,8 @@ def Request_edit(request, pk):
 
 @login_required
 def Reply_remove(request, pk):
-    reply = get_object_or_404(Reply, pk=pk)
-    reply.delete()
+    rep = get_object_or_404(Reply, pk=pk)
+    rep.delete()
     return HttpResponseRedirect("/")
 
 @login_required
